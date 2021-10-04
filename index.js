@@ -4,6 +4,7 @@ let game_own = false;
 let game_over = false;
 let current_score = 0;
 let max_score = 0;
+let move_count = 0;
 
 function fun(){
     printBord()
@@ -46,13 +47,10 @@ function putRandomNumber(){
     if(game_own == true) return;
     let res = getEmptyCells();
     let emptyCells = res.cell
-    if(emptyCells.length == 0){
-        let object = document.querySelector('.verdict')
-        object.style.color = "#e6e6e6"
-        object.style.backgroundColor = "#ff471a"
-        object.innerHTML = 'Game Over!'
-        game_over = true;
-        return 
+    if(emptyCells.length == 0) {
+        move_count  += 1;
+        console.log(move_count,'ff')
+        return;
     }
     let idx1 = Math.floor(Math.random()*emptyCells.length);
     board[emptyCells[idx1].x][emptyCells[idx1].y] = Math.random() > 0.5 ? 4 : 2
@@ -123,7 +121,7 @@ function makeMove(dir){
     let oldBoard = copyBoard()
     if(dir == 'UP'){
         rotate90AntiClockWise()
-        printBoardOnColsole()
+        // printBoardOnColsole()
         performOperation()
         rotate90Clockwise()
         console.log('UP')
@@ -138,7 +136,7 @@ function makeMove(dir){
     }
     else if(dir == 'DOWN'){
         rotate90Clockwise()
-        printBoardOnColsole()
+        // printBoardOnColsole()
         performOperation()
         rotate90AntiClockWise()
         console.log('DOWN')
@@ -151,10 +149,13 @@ function makeMove(dir){
 
     if(stateCheck(oldBoard)){
         putRandomNumber()
+        move_count = 0;
     }
     else {
         let emptyCells = getEmptyCells().cell;
-        if(emptyCells.length == 0){
+        move_count += 1;
+        console.log(move_count)
+        if(emptyCells.length == 0 && move_count>=4){
             let object = document.querySelector('.verdict')
             object.style.color = "#e6e6e6"
             object.style.backgroundColor = "#ff471a"
@@ -207,10 +208,10 @@ function performOperationOnRow(row_idx){
             else newRow[i] = a;
         }
     }
-    let pp = ''
-    for(let i = 0 ;i < newRow.length;i++)
-    pp = pp + newRow[i] + ' ';
-    console.log(pp)
+    // let pp = ''
+    // for(let i = 0 ;i < newRow.length;i++)
+    // pp = pp + newRow[i] + ' ';
+    // console.log(pp)
     return newRow;
 }
 
@@ -267,8 +268,10 @@ function resetCurrentScore(){
     document.querySelector('.verdict').innerHTML=''
     document.querySelector('.verdict').style.backgroundColor = "grey"
     game_own = false;
+    game_over = false
     for(let i=0;i<board.length;i++)
     for(let j=0;j<board[i].length;j++)
     board[i][j] = 0;
+    move_count = 0;
     fun()
 }
