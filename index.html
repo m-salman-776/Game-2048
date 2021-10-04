@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>2048</title>
+</head>
+<body onload="fun();">
+<center>
+    <div class="score">
+        <div class="name">2048</div>
+        <div class="curr"><span style="font-weight: 100px;">SCORE</span>
+            <div id="curr">0</div>
+        </div>
+        <div class="max">BEST
+            <div id="max">0</div>
+        </div>
+    </div>
+    <div class="game">
+        <div class="grid">
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+            <div class="row">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
+        </div>
+    </div>
+    <div class="controller">
+        <button class="btn" onclick="resetCurrentScore();">New Game</button>
+        <button class="btn">Quit</button>
+        <div class="verdict"></div>
+    </div>
+</center>
+</body>
+</html>

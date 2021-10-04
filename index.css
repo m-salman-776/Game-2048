@@ -1,0 +1,84 @@
+.grid {
+    display: table;
+    border-spacing: 5px
+  }
+  .row {
+    display: table-row
+  }
+  .cell {
+    width: 90px;
+    height: 90px;
+    margin-top:20px;
+    background:#cdc1b4;
+    display: table-cell;
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+  }
+.game{
+    align-self: center;
+    background-color: #bbada0;
+    width: 500px;
+    height: 400px;
+}
+.score{
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #bbada0;
+    width: 500px;
+    height: 80px;
+    border-top-left-radius: .5cm;
+    border-top-right-radius: .5cm;
+}
+#curr, #max{
+    font-size: 40px;
+}
+.max,.curr{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    height: 90px;
+    width: 90px;
+    background-color: grey;
+    border-radius: .5cm;
+}
+.name{
+    font-size: 70px;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 80px;
+    margin-bottom: 10px;
+    font-style: italic;
+    color: darkslategrey;
+}
+.controller{
+    display: flex;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    background-color: #bbada0;
+    width: 500px;
+    height: 80px;
+    border-bottom-left-radius: .5cm;
+    border-bottom-right-radius: .5cm;
+}
+.btn{
+    align-self: center;
+    margin-left: 80px;
+    text-align: center;
+    margin-left: 20px;
+    height: 50px;
+    width: 100px;
+    background-color: grey;
+    border-radius: .5cm;
+}
+.verdict{
+    align-self: center;
+    margin-left: 80px;
+    padding-top: 10px;
+    text-align: center;
+    margin-left: 20px;
+    height: 50px;
+    width: 200px;
+    background-color: grey;
+    border-radius: .5cm;
+}
