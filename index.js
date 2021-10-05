@@ -103,7 +103,6 @@ function rotate90AntiClockWise(){
         left += 1 ; right -= 1;
     }
 }
-
 function makeMove(dir){
     let object = document.querySelector('.verdict')
     if(game_own){
@@ -153,9 +152,7 @@ function makeMove(dir){
     }
     else {
         let emptyCells = getEmptyCells().cell;
-        move_count += 1;
-        console.log(move_count)
-        if(emptyCells.length == 0 && move_count>=4){
+        if(emptyCells.length == 0 && !checkForPossibleMove()){
             let object = document.querySelector('.verdict')
             object.style.color = "#e6e6e6"
             object.style.backgroundColor = "#ff471a"
@@ -171,7 +168,6 @@ function performOperation(){
     }
     updateScore()
 }
-
 function printBoardOnColsole(){
     for(let i=0;i<board.length;i++){
         let line = ''
@@ -180,7 +176,6 @@ function printBoardOnColsole(){
         console.log(line + '\n')
     }
 }
-
 function performOperationOnRow(row_idx){
     let row = board[row_idx]
     let st =  new Stack();
@@ -210,7 +205,6 @@ function performOperationOnRow(row_idx){
     }
     return newRow;
 }
-
 class Stack {
     constructor()
     {
@@ -270,4 +264,31 @@ function resetCurrentScore(){
     board[i][j] = 0;
     move_count = 0;
     fun()
+}
+
+function checkForPossibleMove(){
+    return (rowCheck() || columnCheck())
+}
+
+function rowCheck(){
+    for(let row=0;row<board.length;row++){
+        let newRow = []
+        for(let col=0;col<board.length;col++)
+        if(board[row][col] > 0){
+            if(newRow.length>=1 && newRow[newRow.length-1] == board[row][col]) return true;
+            newRow.push(board[row][col]);
+        } 
+    }
+}
+
+function columnCheck(){
+    for(let col = 0 ; col < board.length;col++){
+        let newCol = []
+        for(let row=0;row<board.length;row++){
+            if(board[row][col] > 0){
+                if(newCol.length>=1 && newCol[newCol.length-1] == board[row][col]) return true;
+                newCol.push(board[row][col])
+            }
+        }
+    }
 }
