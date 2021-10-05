@@ -41,17 +41,11 @@ function getEmptyCells(){
     else if(board[i][j] >= 128) result = true;
     return {cell:emptyCells,result : result}
 }
-
-
 function putRandomNumber(){
     if(game_own == true) return;
     let res = getEmptyCells();
     let emptyCells = res.cell
-    if(emptyCells.length == 0) {
-        move_count  += 1;
-        console.log(move_count,'ff')
-        return;
-    }
+    if(emptyCells.length == 0)  return;
     let idx1 = Math.floor(Math.random()*emptyCells.length);
     board[emptyCells[idx1].x][emptyCells[idx1].y] = Math.random() > 0.5 ? 4 : 2
 
@@ -118,34 +112,13 @@ function makeMove(dir){
         return ;
     }
     let oldBoard = copyBoard()
-    if(dir == 'UP'){
-        rotate90AntiClockWise()
-        // printBoardOnColsole()
-        performOperation()
-        rotate90Clockwise()
-        console.log('UP')
+    switch(dir){
+        case 'UP' :rotate90AntiClockWise();performOperation();resetCurrentScore(); break;
+        case 'RIGHT' : rotate90Clockwise();rotate90Clockwise();performOperation();rotate90AntiClockWise();rotate90AntiClockWise(); break;
+        case 'DOWN' :rotate90Clockwise();performOperation();rotate90AntiClockWise(); break;
+        case 'LEFT' :performOperation(); break;
+        default:this.printBord();break;
     }
-    else if(dir == 'RIGHT'){
-        rotate90Clockwise()
-        rotate90Clockwise()
-        performOperation()
-        rotate90AntiClockWise()
-        rotate90AntiClockWise()
-        console.log('RIGHT')
-    }
-    else if(dir == 'DOWN'){
-        rotate90Clockwise()
-        // printBoardOnColsole()
-        performOperation()
-        rotate90AntiClockWise()
-        console.log('DOWN')
-    }
-    else {
-        performOperation()
-        console.log('LEFT')
-    }
-    printBord()
-
     if(stateCheck(oldBoard)){
         putRandomNumber()
         move_count = 0;
@@ -206,8 +179,7 @@ function performOperationOnRow(row_idx){
     return newRow;
 }
 class Stack {
-    constructor()
-    {
+    constructor(){
         this.items = [];
     }
     push(val){
