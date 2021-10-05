@@ -208,10 +208,6 @@ function performOperationOnRow(row_idx){
             else newRow[i] = a;
         }
     }
-    // let pp = ''
-    // for(let i = 0 ;i < newRow.length;i++)
-    // pp = pp + newRow[i] + ' ';
-    // console.log(pp)
     return newRow;
 }
 
