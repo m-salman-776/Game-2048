@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="text_index.js"></script>
+    <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
     <title>2048</title>
 </head>
-<body onload="startGame();">
+<body onload="fun();">
 <center >
     <div class="score">
         <div class="name">2048</div>
@@ -39,10 +39,31 @@
         </div>
     </div>
     <div class="controller">
-        <button class="btn" onclick="resetCurrentScore();">New Game</button>
+        <div class="btn">
+            <button class="btnstyle" onclick="resetCurrentScore();">New Game</button>
+            <select id="dropdown" class="optionstyle">
+                <option value="3">3X3</option>
+                <option value="4">4X4</option>
+            </select>
+        </div>
         <button class="btn" onclick="quit();">Quit</button>
         <div class="verdict"></div>
     </div>
 </center>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>2048</title>
+</head>
+<body onload="startGame();">
+    <div class="container"></div>
 </body>
 </html>
