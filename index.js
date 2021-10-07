@@ -445,6 +445,7 @@ class Board{
         option1.innerHTML = '3X3'
         option2.innerHTML = '4X4'
         newGameButton.innerHTML = 'New Game'
+        option2.setAttribute('selected','true')
         select.appendChild(option1)
         select.appendChild(option2)
         quitButton.setAttribute('class','btn')
